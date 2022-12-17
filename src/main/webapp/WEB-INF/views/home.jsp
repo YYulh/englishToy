@@ -1,19 +1,16 @@
-<<<<<<< HEAD
+
 <!-- 지원 -->
-=======
 <!-- 율현입니다 -->
+<!-- 소홍섭 sohongseop thghdtjq  -->
 >>>>>>> 10c4fa28388613fd435b964d2a754d81da0fb1c5
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file = "/WEB-INF/views/layout/header.jsp"%>
     
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-<<<<<<< HEAD
 
 
-=======
-<!-- 소홍섭 sohongseop thghdtjq  -->
->>>>>>> 6fd99285bcddee7591699547f5888595c33fc23a
+
  
     
 <style>
