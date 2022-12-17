@@ -8,8 +8,12 @@
 <%@ include file = "/WEB-INF/views/layout/header.jsp"%>
     
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<<<<<<< HEAD
 
 
+=======
+<!-- 소홍섭 sohongseop thghdtjq  -->
+>>>>>>> 6fd99285bcddee7591699547f5888595c33fc23a
  
     
 <style>
