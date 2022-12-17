@@ -4,7 +4,7 @@
 <%@ include file = "/WEB-INF/views/layout/header.jsp"%>
     
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-
+<!-- 소홍섭 sohongseop thghdtjq  -->
  
     
 <style>
