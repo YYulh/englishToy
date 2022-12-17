@@ -1,4 +1,4 @@
-
+<!-- 지원 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file = "/WEB-INF/views/layout/header.jsp"%>
@@ -378,7 +378,7 @@ border: 1px solid #d4d4d4;
  	    }) 
  	  } 
  	
-//////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
  		var pw = "";
  		
 	 	$('#admin1').click(function(){
