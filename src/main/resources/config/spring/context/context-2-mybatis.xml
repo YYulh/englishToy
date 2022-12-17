@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+		<!--
+		Mybatis 설정을 위한 jar파일 추가
+		 - mybatis
+		 - mybatis-spring
+		 - spring-jdbc
+	 -->
+		
+		
+		<bean id = "factoryBean"
+			class = "org.mybatis.spring.SqlSessionFactoryBean">
+			<property name = "dataSource" ref = "ds"/>
+			<property name = "configLocation"
+				value = "classpath:config/mybatis/mybatis-config.xml"/>
+			</bean>
+
+	<bean id = "sqlSession" class = "org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref = "factoryBean"/>
+	</bean>
+
+</beans>

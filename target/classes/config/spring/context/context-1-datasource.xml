@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+
+	<!-- db.properties 파일 불러오기... -->
+	<context:property-placeholder location="classpath:config/mybatis/db.properties"/>	
+	
+	<!-- 
+		DataSource 객체를 생성하기위해서는 jar파일 추가를 해야 한다...
+		- Commons DBCP
+	 -->
+	
+	<bean id="ds" class="org.apache.commons.dbcp2.BasicDataSource">
+		<property name="driverClassName" value="${driver}"/>
+		<property name="url" value="${url}"/>
+		<property name="username" value="${user}"/>
+		<property name="password" value="${password}"/>
+		<property name="defaultAutoCommit" value="false"/>
+		<property name="maxTotal" value="10"/>
+	</bean>	
+			
+</beans>
