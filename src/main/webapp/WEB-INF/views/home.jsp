@@ -140,7 +140,7 @@ border: 1px solid #d4d4d4;
               <h1 class="wow fadeInUp" data-wow-delay="1s">SimpleWord</h1>
               <p class="wow fadeInUp" data-wow-delay="1s">
               <small>매일 새로운 단어를 학습하고 나만의 단어장에 추가하세요!<br>
-              실력을 테스트하고 유저들과 경쟁하세요!</small>
+              실력을 테스트하고 유저들과 경쟁하세요 고양이와 아이들</small>
                   </p>
               <a href="#todo" class="wow fadeInUp btn btn-transparent-white btn-capsul btn-lg smoothScroll" data-wow-delay="1.3s">Go Study</a>
           </div>
