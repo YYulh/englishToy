@@ -1,9 +1,10 @@
-<!-- 율현 -->
+<!-- 율현입니다 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file = "/WEB-INF/views/layout/header.jsp"%>
     
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+
 
  
     
