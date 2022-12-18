@@ -334,6 +334,7 @@ $(document).ready(function(){
 					return;
 				}
 
+				
 				var httpMethod = "GET";
 				var httpParam = $('#insertWord').serialize();
 				var httpURL = "${pageContext.request.contextPath}/word/insert?" + $('#insertWord').serialize();
