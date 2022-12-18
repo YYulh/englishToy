@@ -64,7 +64,11 @@
 		<beans:constructor-arg ref = "AdminService"/>
 	</beans:bean>
 	
-
+	<!-- 2022.12.18 추가 -->
+	
+	<beans:bean class = "controller.LoginController">
+		<beans:constructor-arg ref = "LoginService"/>
+	</beans:bean>
 	
 	
 </beans:beans>

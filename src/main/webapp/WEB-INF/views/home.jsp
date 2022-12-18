@@ -353,32 +353,37 @@ border: 1px solid #d4d4d4;
 
 <script>
 
- 	Kakao.init('7999c18bab0dd2defb181eabfe8d7611'); 
- 	console.log(Kakao.isInitialized()); 
+	Kakao.init('4cedde0d0218e258e6a052a37a9a449f'); 
+	console.log(Kakao.isInitialized()); 
 
- 	//카카오로그인 
- 	function kakaoLogin() { 
- 	    Kakao.Auth.login({ 
- 	    scope:'profile_nickname',
- 	      success: function (response) { 
- 	        Kakao.API.request({ 
- 	          url: '/v2/user/me', 	       
- 	          success: function (response) { 
- 	        	  console.log(response)
- 	        	  var user_nik = response.properties.nickname;
- 	        	  return "ㅎㅇ";
- 	        	  	          }, 
- 	          fail: function (error) { 
- 	            console.log(error) 
- 	          }, 
- 	        }) 
- 	      }, 
- 	      fail: function (error) { 
- 	        console.log(error) 
- 	      }, 
- 	    }) 
- 	  } 
- 	
+	//카카오로그인 
+	function kakaoLogin() { 
+	    Kakao.Auth.login({ 
+	    scope:'profile_nickname, account_email',
+	      success: function (response) { 
+	    	 console.log(response);
+	        Kakao.API.request({ 
+	          url: '/v2/user/me', 	       
+	          success: function (response) { 
+	        	  console.log(response);
+	        	  console.log(user_id);
+	        	  var user_id = response.id;
+	        	  var user_nik = response.properties.nickname;
+	        	  var user_email = response.kakao_account.email;
+
+	        	  return location.href= "${cpath}/login/login?user_name=" + user_nik + "&user_email="+ user_email + "&user_id="+user_id+"&mode=kakao";
+	//2583866623
+	          }, 
+	          fail: function (error) { 
+	            console.log(error) 
+	          }, 
+	        }) 
+	      }, 
+	      fail: function (error) { 
+	        console.log(error) 
+	      }, 
+	    }) 
+	  } 
 
  		var pw = "";
  		

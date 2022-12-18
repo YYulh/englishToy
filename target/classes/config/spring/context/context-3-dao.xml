@@ -16,7 +16,10 @@
 		<constructor-arg ref="sqlSession"/>
 	</bean>
 	
-	
+	<!-- 2022.12.18 추가 -->
+	<bean id="LoginDAO" class="dao.LoginDAO">
+		<constructor-arg ref="sqlSession"/>
+	</bean>
 	
 	
 </beans>
