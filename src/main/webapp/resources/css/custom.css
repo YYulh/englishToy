@@ -721,6 +721,10 @@ footer .love-text{
     left: 6%;
   }
 
-  footer {text-align: center;}
+  footer {
+  text-align: center;
+  bottom:0;
+  position:absolute;
+  }
 
 }

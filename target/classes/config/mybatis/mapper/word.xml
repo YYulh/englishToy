@@ -3,7 +3,13 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="word">
-
+	<select id="selectAlle" resultType="vo.WordVO">
+		select * from ediction_word
+	</select>
+	
+	<select id="selectAllk" resultType="vo.WordVO">
+		select * from kdiction_word
+	</select>
 </mapper>
 
 

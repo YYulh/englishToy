@@ -15,4 +15,6 @@ public class WordDAO {
 //	public int delete(int no) {
 //		return sqlSession.delete("delete.delete",no);
 //	}
+	
+
 }

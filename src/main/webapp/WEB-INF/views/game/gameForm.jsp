@@ -30,24 +30,28 @@ table,tr,td,th{
 	border-spacing : 0px;
 	border:1px black solid;
 }
+
+footer{
+bottom:0;
+position:absolute;
+}
 </style>
+
 
 <div id = banner_back></div>
 
 <%@ include file = "/WEB-INF/views/layout/header.jsp"%>
-	<div id="game">
-		<table>
-			<tr>
-				<th>영단어</th>
-				<td><input type="text" name="word_name" value="${word_name}"></td>
-			</tr>
-			<tr>
-				<th>한글단어</th>
-				<td><input type="text" name="word_mean" value="${word_mean}"></td>
-			</tr>
-			<tr>
-				<td colspan ="2" align="right"><button type="submit">제출하기</button></td>
-			</tr>
-		</table>
+	<div id="game" align="center">
+		<a class="btn-transparent-prime" href="${ pageContext.request.contextPath}/game/gameStart?mode=egame">영한 단어게임</a>
+		<a class="btn-transparent-prime" href="${ pageContext.request.contextPath}/game/gameStart?mode=kgame">한영 단어게임</a>
 	</div>
+
 <%@ include file = "/WEB-INF/views/layout/footer.jsp"%>
+<script type="text/javascript">
+
+
+
+
+
+</script>
+
