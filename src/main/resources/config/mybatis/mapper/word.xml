@@ -3,7 +3,22 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="word">
-
+	
+	<select id = "userWordList" parameterType="int" resultType="vo.WordVO">
+		select * from words where user_no = #{user_no}
+	</select>
+	
+	<update id = "update" parameterType="vo.WordVO" >
+		update words set word_memo =#{word_memo} where word_no = #{word_no}
+	</update>
+	
+	<select id = "getMemo" parameterType="int" resultType="String">
+		select word_memo from words where word_no = #{word_no}
+	</select>
+	
+	<delete id = "delete" parameterType="int">
+		delete words where word_no = #{word_no}
+	</delete>
 </mapper>
 
 

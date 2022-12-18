@@ -1,6 +1,7 @@
 package service;
 
 import dao.UserDAO;
+import vo.WordVO;
 
 public class UserService {
 
@@ -9,8 +10,8 @@ public class UserService {
 		public UserService(UserDAO userdao) {
 			this.userdao = userdao;
 		}
-//		public MemberVO selectOne(int no) {
-//			return updatedao.selectOne(no);
+//		public int update(WordVO vo) {
+//			return worddao.update(vo);
 //		}
 
 	}
