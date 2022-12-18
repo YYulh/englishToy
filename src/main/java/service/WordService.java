@@ -31,5 +31,8 @@ public class WordService {
 		public int insert(WordVO vo) {
 			return worddao.insert(vo);
 		}
+		public int updateLike(WordVO vo) {
+			return worddao.updateLike(vo);
+		}
 
 	}

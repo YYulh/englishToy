@@ -119,6 +119,22 @@ public class WordController {
 				return "½ÇÆÐ";
 			}
 		}
+	@RequestMapping("/word/updateLike")
+	public String updateLike(HttpServletRequest request) {
+//		Integer user_no = (Integer)request.getSession().getAttribute("user_no");
+		int user_no =1;
+		int word_no = Integer.parseInt(request.getParameter("word_no"));
+		int word_like = Integer.parseInt(request.getParameter("word_like"));
+		
+		WordVO vo = new WordVO();
+		vo.setWord_no(word_no);
+		vo.setUser_no(user_no);
+		vo.setWord_like(word_like);
+		
+		int su = wordService.updateLike(vo);
+
+		return "/word/insertForm";
+	}
 	
 	
 }

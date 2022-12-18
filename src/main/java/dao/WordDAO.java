@@ -33,4 +33,7 @@ public class WordDAO {
 	public int insert(WordVO vo) {
 		return sqlSession.insert("word.insert",vo);
 	}
+	public int updateLike(WordVO vo) {
+		return sqlSession.update("word.updateLike",vo);
+	}
 }
