@@ -4,21 +4,22 @@ public class WordVO {
 
 	private int word_no;
 	private int user_no;
-	private String word_name;
-	private String word_mean;
-	
+	private String word_Ename;
+	private String word_Kname;
+	private String word_memo;
+	private int word_like;
 	public WordVO() {
 		
 	}
-	
-	public WordVO(int word_no, int user_no, String word_name, String word_mean) {
+	public WordVO(int word_no, int user_no, String word_Ename, String word_Kname, String word_memo, int word_like) {
 		super();
 		this.word_no = word_no;
 		this.user_no = user_no;
-		this.word_name = word_name;
-		this.word_mean = word_mean;
+		this.word_Ename = word_Ename;
+		this.word_Kname = word_Kname;
+		this.word_memo = word_memo;
+		this.word_like = word_like;
 	}
-
 	public int getWord_no() {
 		return word_no;
 	}
@@ -31,18 +32,31 @@ public class WordVO {
 	public void setUser_no(int user_no) {
 		this.user_no = user_no;
 	}
-	public String getWord_name() {
-		return word_name;
+	public String getWord_Ename() {
+		return word_Ename;
 	}
-	public void setWord_name(String word_name) {
-		this.word_name = word_name;
+	public void setWord_Ename(String word_Ename) {
+		this.word_Ename = word_Ename;
 	}
-	public String getWord_mean() {
-		return word_mean;
+	public String getWord_Kname() {
+		return word_Kname;
 	}
-	public void setWord_mean(String word_mean) {
-		this.word_mean = word_mean;
+	public void setWord_Kname(String word_Kname) {
+		this.word_Kname = word_Kname;
 	}
+	public String getWord_memo() {
+		return word_memo;
+	}
+	public void setWord_memo(String word_memo) {
+		this.word_memo = word_memo;
+	}
+	public int getWord_like() {
+		return word_like;
+	}
+	public void setWord_like(int word_like) {
+		this.word_like = word_like;
+	}
+
 	
 	
 }

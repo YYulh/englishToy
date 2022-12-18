@@ -3,7 +3,34 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="word">
-
+	
+	<select id = "userWordList" parameterType="int" resultType="vo.WordVO">
+		select * from words where user_no = #{user_no} order by word_like desc
+	</select>
+	
+	<update id = "update" parameterType="vo.WordVO" >
+		update words set word_memo =#{word_memo} where word_no = #{word_no}
+	</update>
+	
+	<select id = "getMemo" parameterType="int" resultType="String">
+		select word_memo from words where word_no = #{word_no}
+	</select>
+	
+	<delete id = "delete" parameterType="int">
+		delete words where word_no = #{word_no}
+	</delete>
+	
+	<select id = "meaningList" parameterType="String" resultType="vo.AdminVO">
+		select k.kDiction_word from kDiction k , eDiction e where e.eDiction_no = k.kDiction_no and e.eDiction_word like #{word_name}
+	</select>
+	
+	<insert id = "insert" parameterType="vo.WordVO">
+		insert into words values(seq_words_word_no.nextval,#{user_no},#{word_Ename},#{word_Kname},#{word_memo},0)
+	</insert>
+	
+	<update id = "updateLike" parameterType="vo.WordVO">
+		update words set word_like = #{word_like} where word_no = #{word_no} and user_no = #{user_no}
+	</update>
 </mapper>
 
 
