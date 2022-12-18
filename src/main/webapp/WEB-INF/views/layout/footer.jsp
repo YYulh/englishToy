@@ -3,7 +3,7 @@
     
         <div class="container">
             <div class="row">
-               Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a>
+               Shared by <i class="fa fa-love"></i>
 
             </div>
         

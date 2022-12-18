@@ -7,6 +7,8 @@
 
 <style>
 .word_card{
+margin-left:15px;
+margin-right:15px;
 border:1px solid black;
 width:20%;
 margin-top:15px;
@@ -40,6 +42,30 @@ float:right;
 border:none;
 background:none;
 }
+#word_section{
+display:flex;
+flex-flow:wrap;
+justify-content: center;
+margin-bottom:150px;
+}
+#word_all{
+margin-top:100px;
+
+}
+h4{
+font-size:25px;
+font-weight:bolder;
+}
+a:hover{
+cursor:pointer;
+}
+footer{
+bottom:0;
+position:absolute;
+}
+#exampleModalCenter2{
+margin-top:200px;
+}
 </style>
 
 <div id = banner_back></div>
@@ -47,11 +73,12 @@ background:none;
 
 
 
-<div align="center">
-
+<div align="center" id="word_all"> 
 	<div>
-	<h4>낱말 카드</h4>
+		<h4>My Card</h4>
 	</div>
+<div align="center" id = "word_section">
+
 	<c:forEach var = "list" items="${list }">
 		<div class="word_card word_card${list.word_no}">
 			<div class="ename">
@@ -61,9 +88,9 @@ background:none;
 				<p>${list.word_Kname }</p>
 			</div>
 			<div>
-				<a onclick ="show_memo(${list.word_no});">></a>
+				<a onclick ="show_memo(${list.word_no});">memo▽</a>
 			</div>
-			<div class="memo" id="id${list.word_no}">
+			<div class="memo memo${list.word_no}" >
 				<span class = "r${list.word_no}">${list.word_memo }</span>
 				<span class = "update_memo u${list.word_no}"><input type = "text"  value ="${list.word_memo }" name = "word_memo" id ="update_memo" class="update${list.word_no}"></span>
 <!-- 				저장, 수정버튼 -->
@@ -72,9 +99,52 @@ background:none;
 			</div>
 		</div>
 	</c:forEach>
-	
 </div>
 
+<div>
+		<a data-toggle="modal" data-target="#exampleModalCenter2"><input type="button" value = "단어 등록" ></a>
+	</div>
+	
+	<div class="modal fade " id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">New card</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      
+      <div class="modal-body">
+        	<div align="center" id = "section">
+		<h2 id="head">Card</h2>
+		<br><br>
+		<form action="#" id="insertWord">
+			<table>
+				<tr>
+					<th><input type = "text" placeholder="please insert word" size="30" id ="searchWord" name="searchWord"></th>
+					<th><input type="button"  value="검색" id ="searchWord_btn"></th>
+				</tr>
+				
+				<tr>
+					<th><input type = "text" readonly size="30" id ="answerWord" name="answerWord"></th>					
+				</tr>
+			 	<tr>
+					<th><input type = "text" placeholder="your memo" size="30" name = "memo"></th>					
+				</tr>
+			</table>
+		</form>
+			</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="insert">등록</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>	
 
 <script>
 $(document).ready(function(){
@@ -82,10 +152,13 @@ $(document).ready(function(){
 	$('.memo').hide();
 	$('.update_memo').hide();
 	$('.updateMemo').hide();
-
+	
 	
 	
 })
+	function insertModal(){
+	
+}
 	function updateMemo(i){
 	
 		var no = i;
@@ -128,7 +201,7 @@ $(document).ready(function(){
 	}
 			
 	 function show_memo(i){
-		$('#id'+ i).slideToggle();
+		$('.memo'+ i).slideToggle();
 	}
 	 
 	 function delete_Word(i){
@@ -162,6 +235,75 @@ $(document).ready(function(){
 			}
 		 }
 	 
+	 
+		 $(document).on("click","#searchWord_btn",function(event){
+			 if($('#searchWord').val()==''){
+				 alert("등록할 단어를 입력해주십시오.");
+				 return;
+			 }
+			 httpRequest = new XMLHttpRequest();
+				
+				if(!httpRequest){
+					alert("인스턴스 생성 불가!");
+					return;
+				}
+				
+				var httpMethod = "GET";
+				var httpParam = $('#searchWord').val();
+				var httpURL = "${pageContext.request.contextPath}/word/search?word_name="+ $('#searchWord').val();
+			
+				httpRequest.open(httpMethod,httpURL,true);
+				
+				//callback method 지정
+				httpRequest.onreadystatechange = resultSearchWord;
+				httpRequest.send();
+			
+			})
+			
+			function resultSearchWord(){
+				if(httpRequest.readyState == 4 && httpRequest.status == 200){
+					
+					var data = httpRequest.responseText;
+					console.log(data);
+					if(data == "검색된 결과가 없습니다."){
+						alert(data);
+						return;
+					}else{						
+						$('#answerWord').attr("value",data);
+					return;
+					}
+				}
+			}
+		 $(document).on("click","#insert",function(){
+			 httpRequest = new XMLHttpRequest();
+				
+				if(!httpRequest){
+					alert("인스턴스 생성 불가!");
+					return;
+				}
+
+				var httpMethod = "GET";
+				var httpParam = $('#insertWord').serialize();
+				var httpURL = "${pageContext.request.contextPath}/word/insert?" + $('#insertWord').serialize();
+			
+				httpRequest.open(httpMethod,httpURL,true);
+
+				httpRequest.onreadystatechange = function(){
+					
+						if(httpRequest.readyState == 4 && httpRequest.status == 200){
+							var data = httpRequest.responseText;
+							if(data == "성공"){
+								location.href="${pageContext.request.contextPath}/word/insertForm";
+								return;
+							}else{
+								alert("등록에 실패하였습니다. 관리자에게 문의해주십시오.");
+								return;
+							}
+						}
+					}
+				httpRequest.send();	
+				return;
+		 })
 
 </script>
 

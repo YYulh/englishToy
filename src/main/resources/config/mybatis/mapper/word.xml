@@ -19,6 +19,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id = "delete" parameterType="int">
 		delete words where word_no = #{word_no}
 	</delete>
+	
+	<select id = "meaningList" parameterType="String" resultType="vo.AdminVO">
+		select k.kDiction_word from kDiction k , eDiction e where e.eDiction_no = k.kDiction_no and e.eDiction_word like #{word_name}
+	</select>
+	
+	<insert id = "insert" parameterType="vo.WordVO">
+		insert into words values(seq_words_word_no.nextval,#{user_no},#{word_Ename},#{word_Kname},#{word_memo})
+	</insert>
 </mapper>
 
 

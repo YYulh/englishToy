@@ -3,6 +3,7 @@ package service;
 import java.util.List;
 
 import dao.WordDAO;
+import vo.AdminVO;
 import vo.WordVO;
 
 public class WordService {
@@ -23,6 +24,12 @@ public class WordService {
 		}
 		public int delete(int word_no) {
 			return worddao.delete(word_no);
+		}
+		public List<AdminVO> meaningList(String word_name) {
+			return worddao.meaningList(word_name);
+		}
+		public int insert(WordVO vo) {
+			return worddao.insert(vo);
 		}
 
 	}

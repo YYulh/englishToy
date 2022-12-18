@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import common.ViewPath;
 import service.WordService;
+import vo.AdminVO;
 import vo.WordVO;
 
 @Controller
@@ -73,7 +74,51 @@ public class WordController {
 				return "실패";
 			}
 		}
-	
+	@RequestMapping("/word/search")
+	@ResponseBody
+	public String search(HttpServletRequest request) {
+		String word_name = request.getParameter("word_name");
+		
+		List<AdminVO> list = wordService.meaningList(word_name);
+		if(list.size()<1) {
+			return "검색된 결과가 없습니다.";
+		}else {			
+			String [] arr = new String[list.size()]; 
+			for(int i = 0; i < list.size(); i++) {
+				arr[i] = list.get(i).getkDiction_word();			
+			}
+			String result =  String.join(",",arr);
+			
+		return result;
+		}
+	}
+	@RequestMapping("/word/insert")
+	@ResponseBody
+	public String insert(HttpServletRequest request) {
+			
+//		int user_no = (Integer)request.getSession().getAttribute("login");
+		int user_no=1;
+		String word_Ename = request.getParameter("searchWord");
+		String word_Kname = request.getParameter("answerWord");
+		String word_memo = request.getParameter("memo");
+		if(word_memo ==null) {
+			word_memo= " ";
+		}
+		
+		WordVO vo = new WordVO();
+		vo.setUser_no(user_no);
+		vo.setWord_Ename(word_Ename);
+		vo.setWord_Kname(word_Kname);
+		vo.setWord_memo(word_memo);
+
+		int su = wordService.insert(vo);
+		
+			if(su != 0) {		
+				return "성공";
+			} else {
+				return "실패";
+			}
+		}
 	
 	
 }
