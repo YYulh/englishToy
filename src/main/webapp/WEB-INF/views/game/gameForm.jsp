@@ -46,7 +46,7 @@ table,tr,td,th{
 				<td><input type="text" name="word_mean" value="${word_mean}"></td>
 			</tr>
 			<tr>
-				<td><button type="submit" ></button></td>
+				<td colspan ="2" align="right"><button type="submit">제출하기</button></td>
 			</tr>
 		</table>
 	</div>
