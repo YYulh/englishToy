@@ -115,10 +115,14 @@ margin-top:10px;
 			<div class="ename">
 				<p>
 				<c:if test="${list.word_like==0}">
-					<span><input type="button" value ="☆" class="like like${list.word_no}" onclick="changeLike(${list.word_no});" ></span>
+					<span><button class="like like${list.word_no}" value ="0"onclick="changeLike(${list.word_no});" >
+					<img src="${pageContext.request.contextPath }/resources/img/heart 0.png" width="15px;">
+					</button></span>
 				</c:if>
 				<c:if test="${list.word_like==1}">
-					<span><input type="button" value ="★" class="like like${list.word_no}" onclick="changeLike(${list.word_no});" ></span>
+					<span><button  class="like like${list.word_no}"value ="1" onclick="changeLike(${list.word_no});" >
+					<img src="${pageContext.request.contextPath }/resources/img/heart 1.png" width="15px;">
+					</button></span>
 				</c:if>
 				${list.word_Ename }
 				<span class = "xbox"><input type="button" value="x" onclick="delete_Word(${list.word_no});"></span>
@@ -194,14 +198,7 @@ $(document).ready(function(){
 	$('.memo').hide();
 	$('.update_memo').hide();
 	$('.updateMemo').hide();
-	
-	if($('.like').val()==0){
-		$($('.like').val()==0).attr("value","☆");
-	}
-	if($('.like').val()==1){
-		$(this).attr("value","★");
-	}
-	
+
 	
 })
 
@@ -334,6 +331,7 @@ $(document).ready(function(){
 					return;
 				}
 
+				
 				var httpMethod = "GET";
 				var httpParam = $('#insertWord').serialize();
 				var httpURL = "${pageContext.request.contextPath}/word/insert?" + $('#insertWord').serialize();
@@ -360,12 +358,12 @@ $(document).ready(function(){
 		  function changeLike(i){
 		console.log($('.like'+i).val());
 		
-			if($('.like'+i).val() == "☆"){
-				$('.like'+i).attr("value","★");
+			if($('.like'+i).val() == 0){
+				$('.like'+i).html("<img src='${pageContext.request.contextPath }/resources/img/heart 1.png' width='15px;'>");
 				location.href="${pageContext.request.contextPath}/word/updateLike?word_no="+i+"&word_like=1";
 				return;
 			}else{
-				$('.like'+i).attr("value","☆");
+				$('.like'+i).html("<img src='${pageContext.request.contextPath }/resources/img/heart 0.png' width='15px;'>");
 				location.href="${pageContext.request.contextPath}/word/updateLike?word_no="+i+"&word_like=0";
 				return;
 			}

@@ -126,6 +126,7 @@ public class WordController {
 		int word_no = Integer.parseInt(request.getParameter("word_no"));
 		int word_like = Integer.parseInt(request.getParameter("word_like"));
 		
+		System.out.println(word_like);
 		WordVO vo = new WordVO();
 		vo.setWord_no(word_no);
 		vo.setUser_no(user_no);
