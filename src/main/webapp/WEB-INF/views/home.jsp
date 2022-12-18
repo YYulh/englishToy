@@ -214,8 +214,10 @@ border: 1px solid #d4d4d4;
 <!--           <div class="feature-icon"> -->
 <!--             <span><img class="img-responsive" src="images/todo-icon-05.png" /></span> -->
 <!--           </div> -->
-          <h3>Word Game</h3>
-          <p>단어를 맞히고 다른 유저들과 <br>점수를 비교해보세요!</p>
+          
+          	<h3>Word Game</h3>
+          	<p><a  href="${pageContext.request.contextPath}/game/gameForm">단어를 맞히고 다른 유저들과 <br>점수를 비교해보세요!</a></p>
+          
         </div>
       </div>
 

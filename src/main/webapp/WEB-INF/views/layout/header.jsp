@@ -30,8 +30,8 @@
 <!--   	? -->
     <link rel="stylesheet" href="/engToy/resources/css/contact-input-style.css">
     
-    </head>
-    <body>
+</head>
+<body>
      <div class="loader loader-bg">
         <div class="loader-inner ball-pulse-rise">
           <div></div>
@@ -40,7 +40,7 @@
           <div></div>
           <div></div>
         </div>
-      </div>
+     </div>
     <!------------Static navbar ------------>
     <nav class="navbar navbar-default top-bar affix" data-spy="affix" data-offset-top="250" >
       <div class="container">
@@ -54,12 +54,11 @@
           <a class="navbar-brand" href="#">SimpleWord</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          
           <ul class="nav navbar-nav navbar-right">
             <li><a href="/engToy/">Home</a></li>
               <li><a href="#" data-toggle="modal" data-target="#exampleModalCenter">Login</a></li>
               <li><a href="#video-sec" >Join</a></li>
-              <li><a href="#location">TestGame</a></li>
+              <li><a href="${pageContext.request.contextPath}/game/gameForm">TestGame</a></li>
               <li><a href="#hotels">Rank</a></li>
               <li><a href="#contact-sec">Mypage</a></li>           
           </ul>

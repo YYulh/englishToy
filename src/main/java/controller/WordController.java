@@ -20,7 +20,11 @@ public class WordController {
 		
 		return ViewPath.WORD + "insertForm.jsp";
 	}
-	
+	@RequestMapping("/game/gameForm")
+	public String gameForm() {
+		
+		return ViewPath.GAME + "gameForm.jsp";
+	}
 }
 
 

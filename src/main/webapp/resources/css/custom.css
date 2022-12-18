@@ -148,6 +148,7 @@ section {
 
 
 
+
 /* section title */
 .section-title {
   padding-bottom: 30px;
@@ -251,8 +252,8 @@ background: linear-gradient(120deg, #7b4397 , #dc2430); /* W3C, IE 10+/ Edge, Fi
 .affix {
 	animation: 1s ease 0s normal both 1 running slideInDown;
 	background: #7b4397; /* fallback for old browsers */
-background: -webkit-linear-gradient(120deg, #7b4397 , #dc2430); /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(120deg, #7b4397 , #dc2430); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: -webkit-linear-gradient(120deg, #7b4397 , #dc2430); /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(120deg, #7b4397 , #dc2430); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 	padding: 0.75em 0;
 	position: fixed;
 	z-index: 1000;
