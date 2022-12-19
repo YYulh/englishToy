@@ -13,13 +13,13 @@ import common.ViewPath;
 @Controller
 public class HomeController {
 
-	@RequestMapping(value = {"/","/engToy/","/engToy"}, method = RequestMethod.GET)
+	@RequestMapping(value = {"/","/engToy"}, method = RequestMethod.GET)
 	public String home(HttpServletRequest request, Model model) {
 		
 		String id = request.getParameter("id");
 
 		boolean check = false;
-		//쿠키
+		
 		if(id == null){
 			
 			Cookie[] cks = request.getCookies();
