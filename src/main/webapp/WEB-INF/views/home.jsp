@@ -1,14 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-<!-- 지원 -->
-<!-- 율현입니다 -->
-<!-- 소홍섭 sohongseop thghdtjq  -->
->>>>>>> 10c4fa28388613fd435b964d2a754d81da0fb1c5
-=======
->>>>>>> e15430393239dd73fff786fe4d973276c5bb028d
-=======
->>>>>>> d983fcde4ec8a86a7275ebc29b51ab94ab87a500
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file = "/WEB-INF/views/layout/header.jsp"%>
