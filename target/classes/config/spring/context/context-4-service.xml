@@ -20,6 +20,9 @@
 		<constructor-arg ref="LoginDAO"/>
 	</bean>
 
+	<bean id="JoinService" class="service.JoinService">
+		<constructor-arg ref="JoinDAO"/>
+	</bean>
 	
 
 </beans>

@@ -12,6 +12,8 @@ public class UserVO {
 	private int user_point;
 	private Date user_date;
 	
+	private String mode;
+	
 	public UserVO() {
 	}
 
@@ -25,6 +27,20 @@ public class UserVO {
 		this.user_email = user_email;
 		this.user_point = user_point;
 		this.user_date = user_date;
+	}
+	
+
+	public UserVO(int user_no, int grade_no, String user_id, String user_pw, String user_email, int user_point,
+			Date user_date, String mode) {
+		super();
+		this.user_no = user_no;
+		this.grade_no = grade_no;
+		this.user_id = user_id;
+		this.user_pw = user_pw;
+		this.user_email = user_email;
+		this.user_point = user_point;
+		this.user_date = user_date;
+		this.mode = mode;
 	}
 
 	public int getUser_no() {
@@ -83,7 +99,15 @@ public class UserVO {
 		this.user_date = user_date;
 	}
 
+	public String getMode() {
+		return mode;
+	}
 
+	public void setMode(String mode) {
+		this.mode = mode;
+	}
+
+	
 	
 	
 }

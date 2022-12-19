@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="login">
+	<select id="loginCheck" parameterType="user" resultType="int">
+		select u.user_no
+		from users u
+		where u.user_id =#{user_id}
+		<choose>
+			<when test="mode == 'kakao'">
+				and u.user_email =#{user_email}
+			</when>
+			<otherwise>
+				and u.user_pw =#{user_pw}
+			</otherwise>
+		</choose>
+	</select>
+	
+
+
+</mapper>

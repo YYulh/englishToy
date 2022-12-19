@@ -21,5 +21,8 @@
 		<constructor-arg ref="sqlSession"/>
 	</bean>
 	
+	<bean id="JoinDAO" class="dao.JoinDAO">
+		<constructor-arg ref="sqlSession"/>
+	</bean>
 	
 </beans>
