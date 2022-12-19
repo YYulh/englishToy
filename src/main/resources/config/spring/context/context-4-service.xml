@@ -15,8 +15,14 @@
 		<constructor-arg ref="AdminDAO"/>
 	</bean>
 
-	
+	<!-- 2022.12.18 추가 -->
+	<bean id="LoginService" class="service.LoginService">
+		<constructor-arg ref="LoginDAO"/>
+	</bean>
 
+	<bean id="JoinService" class="service.JoinService">
+		<constructor-arg ref="JoinDAO"/>
+	</bean>
 	
 
 </beans>

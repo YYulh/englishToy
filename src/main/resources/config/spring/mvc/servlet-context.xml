@@ -49,6 +49,8 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean> -->
 	
+	<context:annotation-config/>
+	
 	<context:component-scan base-package="com.increpas.engToy"/>
 	
 
@@ -64,7 +66,14 @@
 		<beans:constructor-arg ref = "AdminService"/>
 	</beans:bean>
 	
-
+	<!-- 2022.12.18 추가 -->
 	
+	<beans:bean class = "controller.LoginController">
+		<beans:constructor-arg ref = "LoginService"/>
+	</beans:bean>
+	
+	<beans:bean class = "controller.JoinController">
+		<beans:constructor-arg ref = "JoinService"/>
+	</beans:bean>
 	
 </beans:beans>

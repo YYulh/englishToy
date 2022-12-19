@@ -15,64 +15,6 @@
     
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 
-
-
- 
-    
-<style>
-.loginInput{
-	font-size: 16px;
-    padding: 0;
-    height: 54px;
-    line-height: 54px;
-    background: #ffffff;
-}
-.loginInput>th>input{
-width:390px;
-height:55px;
-border: 1px solid #d4d4d4;
-}
-
-#login_Btn{
- background: #000000;
- border: none;
- text-align: center;
- width: 400px;
- color: #fff;
- height: 61px;
- line-height: 61px;
- font-size: 18px;
- letter-spacing: -1px;
- border-radius:5px;
- margin-top:40px;
- margin-bottom:10px;
- }
-#find>a{
- padding: 0 8px 0 0;
- color: #000000;
- font-size: 14px;
- text-decoration:none;
- font-weight:bolder;
- }
- #find{
- margin-left:120px;
- }
- .admin{
- float:left;
- width:200px;
- height:200px;
- display:flex;
- border:none;
- background:none;
- }
- 
- 
-</style>
-
-
-
-
-
   
 <!-- 로그인 모달 박스 -->
 <div class="modal fade " id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -90,19 +32,19 @@ border: 1px solid #d4d4d4;
         	<div align="center" id = "section">
 		<h2 id="head">LOGIN</h2>
 		<br><br><br>
-		<form action="${ pageContext.request.contextPath }/member/login/check" onsubmit="return check(this)">
+		<form action="${cpath}/login/login?mode=nomal" method="post">
 			<table>
 				<tr class="loginInput">
-					<th><input type="text" name="id" value="${id }" placeholder="아이디"></th>
+					<th><input type="text" name="id" value="${id }" placeholder="아이디" required="required"></th>
 				</tr>
 				<tr class="loginInput">
-					<th><input type="password" name="pw" placeholder="비밀번호"></th>
+					<th><input type="password" name="pw" placeholder="비밀번호" required="required"></th>
 				</tr>
 				<tr>
 					<th colspan="2" align="right">
 						<span class="ckid">
 							<c:choose>
-								<c:when test="${check }">
+								<c:when test="${check}">
 									<input type="checkbox" name="ckid" value="true" checked="checked">
 								</c:when>
 								<c:otherwise>
@@ -132,10 +74,6 @@ border: 1px solid #d4d4d4;
 				</table>
 				</form>
 			</div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">로그인</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
       </div>
     </div>
   </div>
@@ -237,7 +175,7 @@ border: 1px solid #d4d4d4;
 <!--             <span><img class="img-responsive" src="images/todo-icon-06.png" /></span> -->
 <!--           </div> -->
            <h3>Translation</h3>
-           <p>모르는 단어가 생겼나요?<br>제가 알려드릴게요!</p>
+           <a><p>모르는 단어가 생겼나요?<br>제가 알려드릴게요!</p></a>
         </div>
       </div>
 
@@ -358,67 +296,5 @@ border: 1px solid #d4d4d4;
                 </div>
                 </div>
 </section>
-
-<!------------ Footer section ------------>
-
-
-<script>
-
- 	Kakao.init('7999c18bab0dd2defb181eabfe8d7611'); 
- 	console.log(Kakao.isInitialized()); 
-
- 	//카카오로그인 
- 	function kakaoLogin() { 
- 	    Kakao.Auth.login({ 
- 	    scope:'profile_nickname',
- 	      success: function (response) { 
- 	        Kakao.API.request({ 
- 	          url: '/v2/user/me', 	       
- 	          success: function (response) { 
- 	        	  console.log(response)
- 	        	  var user_nik = response.properties.nickname;
- 	        	  return "ㅎㅇ";
- 	        	  	          }, 
- 	          fail: function (error) { 
- 	            console.log(error) 
- 	          }, 
- 	        }) 
- 	      }, 
- 	      fail: function (error) { 
- 	        console.log(error) 
- 	      }, 
- 	    }) 
- 	  } 
- 	
-
- 		var pw = "";
- 		
-	 	$('#admin1').click(function(){
- 	 			pw = pw + "1";
- 	 			console.log(pw);
-	 		})
-	 	$('#admin2').click(function(){
- 	 			pw = pw + "2";
- 	 			console.log(pw);
-	 		})
-	 	$('#admin3').click(function(){
- 	 			pw = pw + "3";	
- 	 			console.log(pw);
-	 		})
-	 	$('#admin4').click(function(){
- 	 			pw = pw + "4";	
- 	 			console.log(pw);
-	 		if(pw == '11234'){
-	 	 		location.href="${pageContext.request.contextPath}/admin/list";
-	 		}
-	 	})
-	 	
-
-	 	
-	 	
- 	
- 	
- 	
-</script>
  
 <%@ include file = "/WEB-INF/views/layout/footer.jsp"%>
