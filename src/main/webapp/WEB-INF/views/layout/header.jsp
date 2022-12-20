@@ -37,6 +37,7 @@
     <!-- -- -->
     <link rel="stylesheet" href="/engToy/resources/css/join.css">
     <link rel="stylesheet" href="/engToy/resources/css/login.css">
+    <link rel="stylesheet" href="/engToy/resources/css/trans.css">
     <!-- Custom styles for this template -->
     <link href="form-validation.css" rel="stylesheet">
     <link rel="canonical" href="https://getbootstrap.kr/docs/5.2/examples/checkout/">

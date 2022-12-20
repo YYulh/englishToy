@@ -76,4 +76,37 @@
 		<beans:constructor-arg ref = "JoinService"/>
 	</beans:bean>
 	
+	<beans:bean class = "controller.LangController">
+		<beans:constructor-arg ref = "TransService"/>
+	</beans:bean>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 </beans:beans>

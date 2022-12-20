@@ -164,8 +164,8 @@
 <!--           <div class="feature-icon"> -->
 <!--             <span><img class="img-responsive" src="images/todo-icon-06.png" /></span> -->
 <!--           </div> -->
-           <h3>Translation</h3>
-           <a><p>모르는 단어가 생겼나요?<br>제가 알려드릴게요!</p></a>
+           <a href="${cpath}/translate/form"><h3>Translation</h3>
+           <p>모르는 단어가 생겼나요?<br>제가 알려드릴게요!</p></a>
         </div>
       </div>
 

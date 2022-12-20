@@ -25,4 +25,7 @@
 		<constructor-arg ref="sqlSession"/>
 	</bean>
 	
+	<bean id="TransDAO" class="dao.TransDAO">
+		<constructor-arg ref="sqlSession"/>
+	</bean>
 </beans>

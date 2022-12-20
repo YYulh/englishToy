@@ -24,5 +24,8 @@
 		<constructor-arg ref="JoinDAO"/>
 	</bean>
 	
+	<bean id="TransService" class="service.TransService">
+		<constructor-arg ref="TransDAO"/>
+	</bean>
 
 </beans>
