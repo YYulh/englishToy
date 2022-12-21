@@ -1,5 +1,6 @@
 package service;
 
+
 import dao.WordDAO;
 
 public class WordService {
@@ -12,5 +13,12 @@ public class WordService {
 //		public MemberVO selectOne(int no) {
 //			return updatedao.selectOne(no);
 //		}
-
+		
+		public String selectOneE(){
+			return worddao.selectOneE();
+		}
+		
+		public String selectOneK(){
+			return worddao.selectOneK();
+		}
 	}

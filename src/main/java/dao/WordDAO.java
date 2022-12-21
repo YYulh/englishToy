@@ -1,8 +1,10 @@
 package dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
-import vo.UserVO;
+import vo.WordVO;
 
 
 public class WordDAO {
@@ -15,6 +17,12 @@ public class WordDAO {
 //	public int delete(int no) {
 //		return sqlSession.delete("delete.delete",no);
 //	}
+	public String selectOneE() {
+		return sqlSession.selectOne("word.selectOneE");
+	}
 	
+	public String selectOneK(){
+		return sqlSession.selectOne("word.selectOneK");
+	}
 
 }

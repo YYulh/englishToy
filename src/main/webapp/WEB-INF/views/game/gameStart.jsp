@@ -63,14 +63,14 @@ footer {
 					</tr>
 					<tr>
 						<th>영어 단어</th>
-						<td><input readonly type="text" name="ediction_word" value="${ediction_word}"></td>
+						<td><span id="ediction_word"></span></td>
 					</tr>
 					<tr>
 						<th>한글 단어</th>
 						<td><input type="text" name="kdiction_word" value="${kdiction_word}"></td>
 					</tr>
 					<tr>
-						<td colspan ="2" align="right"><button class="btn-transparent-prime" type="submit" onClick="check()">제출하기</button></td>
+						<td colspan ="2" align="right"><button class="btn-transparent-prime" type="submit" onClick="check(${kdiction_word})">제출하기</button></td>
 					</tr>
 				</table>
 			</form>		
@@ -92,7 +92,7 @@ footer {
 						<td><input  type="text" name="ediction_word" value="${ediction_word}"></td>
 					</tr>
 					<tr>
-						<td colspan ="2" align="right"><button class="btn-transparent-prime" type="submit" onClick="check()">제출하기</button></td>
+						<td colspan ="2" align="right"><button class="btn-transparent-prime" type="submit" onClick="gameSelect();check();">제출하기</button></td>
 					</tr>
 				</table>
 			</form>		
@@ -100,39 +100,22 @@ footer {
 	</c:if>
 	<div id="game">
 		<div id="demo">
-			<button class="btn-transparent-prime" onclick="timer(this)">겜 시작!</button>
 		</div>
+			<button id="gameButton" class="btn btn-transparent-prime" onclick="gameSelect(); timer(this);">겜 시작!</button>
 	</div>
-<div class="modal fade " id="exampleModalCenter5" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">게임 결과!</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      
-      
-      <div class="modal-body">
-        	<div align="center" id = "section">
-			</div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-      </div>
-    </div>
-  </div>
-</div>
+
 	
 <%@ include file = "/WEB-INF/views/layout/footer.jsp"%>
 <script type="text/javascript">
+
 function timer(btn){
 	
-	var time = 180;
+	var time =20;
 	var min = "";//분
 	var sec = "";//초
-
+	var gameButton = document.getElementById("gameButton");
+	gameButton.style.display = 'none';
+	
 	//setInterval(함수, 시간): 주기적인 실행
 	
 	var x = setInterval(function(){
@@ -143,12 +126,77 @@ function timer(btn){
 		time--;
 		
 		if(time<0){
-			document.document.getElementById("demo").innerHTML ="시간 초과";
 			clearInterval(x);
-		}
+			alert("시간 초과");
+			gameButton.style.display = 'block';
+			}
 	},1000);
 }
 
+function gameSelect(){
+	
+	httpRequest = new XMLHttpRequest();
+	
+	if(!httpRequest){
+		alert("인스턴스 생성 불가");
+		return;
+	}
+	var httpURL = "${pageContext.request.contextPath}/game/gameSelect";
+	
+	httpRequest.open("GET",httpURL,true);
+	httpRequest.onreadystatechange = function(){
+		
+		if(httpRequest.readyState == 4 && httpRequest.status == 200){
+			var data = httpRequest.responseText;
+			console.log("데이터=" + data)
+			document.getElementById("ediction_word").innerHTML = httpRequest.responseText;
+			}
+	}
+	httpRequest.send();
+}
+function check(p){
+	
+	httpRequest = new XMLHttpRequest();
+	
+	if(!httpRequest){
+		alert("인스턴스 생성 불가");
+		return;
+	}	
+	var httpMethod = "GET";
+	var httpParam = p;
+	var httpURL = "${pageContext.request.contextPath}/game/gameUpdate?kdiction_word="+p;
+	
+	httpRequest.open(httpMethod,httpURL,true);
+	
+	httpRequest.onreadystatechange = function(){
+		
+		if(httpRequest.readyState == 4 && httpRequest.status == 200){
+			var data = httpRequest.responseText;
+			console.log("데이터=" + data)
+			alert(data);
+		}
+	}
+httpRequest.send();	
+}
+
+ 
 
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

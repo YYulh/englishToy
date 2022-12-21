@@ -6,17 +6,22 @@ public class WordVO {
 	private int user_no;
 	private String word_name;
 	private String word_mean;
+	private String ediction_word;
+	private String kdiction_word;
+	
 	
 	public WordVO() {
 		
 	}
 	
-	public WordVO(int word_no, int user_no, String word_name, String word_mean) {
+	public WordVO(int word_no, int user_no, String word_name, String word_mean,String ediction_word,String kdiction_word) {
 		super();
 		this.word_no = word_no;
 		this.user_no = user_no;
 		this.word_name = word_name;
 		this.word_mean = word_mean;
+		this.ediction_word = ediction_word;
+		this.kdiction_word = kdiction_word;
 	}
 
 	public int getWord_no() {
@@ -43,6 +48,17 @@ public class WordVO {
 	public void setWord_mean(String word_mean) {
 		this.word_mean = word_mean;
 	}
-	
+	public String geteDiction_word() {
+		return ediction_word;
+	}
+	public void seteDiction_word(String ediction_word) {
+		this.ediction_word = ediction_word;
+	}
+	public String getkDiction_word() {
+		return kdiction_word;
+	}
+	public void setkDiction_word(String kdiction_word) {
+		this.kdiction_word=kdiction_word;
+	}
 	
 }
