@@ -70,7 +70,7 @@ footer {
 						<td><input type="text" name="kdiction_word" id="kdiction_word" value="${kdiction_word}"></td>
 					</tr>
 					<tr>
-						<td colspan ="2" align="right"><button id="gameSubmit" class="btn-transparent-prime" type="button" onclick="check();gameSelect();">제출하기</button></td>
+						<td colspan ="2" align="right"><button id="gameSubmit" class="btn-transparent-prime" type="button" onclick="check();">제출하기</button></td>
 					</tr>
 				</table>
 			</form>
@@ -101,9 +101,17 @@ footer {
 	<div id="game">
 		<div id="demo">
 		</div>
-			<button id="gameButton" class="btn btn-transparent-prime" onclick="gameSelect(); timer(this);">겜 시작!</button>
+		<button id="gameButton" class="btn btn-transparent-prime" onclick="gameSelect(); timer(this);">겜 시작!</button>
+			<span id="answer">야옹</span>
 	</div>
-
+	<div>
+		<div>
+			<h3>목록</h3>
+			<c:forEach var="list" items="${list}">
+				<span id="answer"></span>
+			</c:forEach>
+		</div>
+	</div>
 	
 <%@ include file = "/WEB-INF/views/layout/footer.jsp"%>
 <script type="text/javascript">
@@ -155,11 +163,7 @@ function gameSelect(){
 			var data = httpRequest.responseText;
 			console.log("데이터=" + data)
 			document.getElementById("ediction_word").innerHTML = data;
-			
-			if(data !=  ""){
-				arr.push(data);
-			}
-			console.log(arr);
+
 		}
 	}
 	httpRequest.send();
@@ -174,6 +178,7 @@ function check(){
 	}	
 	var httpMethod = "GET";
 	var httpParam = document.getElementById("kdiction_word").value;
+	console.log("httpParam = "+httpParam);
 	var httpURL = "${pageContext.request.contextPath}/game/gameUpdate?kdiction_word="+httpParam;
 	
 	httpRequest.open(httpMethod,httpURL,true);
@@ -181,20 +186,22 @@ function check(){
 	httpRequest.onreadystatechange = function(){
 		
 		if(httpRequest.readyState == 4 && httpRequest.status == 200){
-			var data = httpRequest.responseText;
-			console.log("데이터=" + data)
-			alert(data);
+			var info = httpRequest.responseText;
+			console.log("info=" + info);
+			var answer = document.getElementById("answer").innerHTML = info;
+			if(info !=  ""){
+				arr.push(info);
+			}
+			console.log(arr);
 		}
 	}
 httpRequest.send();	
+setTimeout(gameSelect,1000);
 }
 
-function list(){
-	if(data !=  ""){
-		arr.push(data);
-	}
-	console.log(arr);
-}
+
+	
+
  
 
 </script>

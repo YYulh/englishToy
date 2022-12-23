@@ -62,7 +62,7 @@ public class WordController {
 		
 		
 		
-		if(kdiction_word == detect ) {
+		if(kdiction_word.equals(detect)) {
 			
 			info = "correct";
 			return info;
