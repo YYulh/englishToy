@@ -56,7 +56,7 @@ footer {
 <%@ include file = "/WEB-INF/views/layout/header.jsp"%>
 	<c:if test="${param.mode=='egame'}">
 		<div id="game">
-			<form action="" id="gameform" >
+			<form action="" id="gameForm">
 				<table class="table">
 					<tr>
 						<th colspan="2" align="center">영한 단어 게임</th>
@@ -67,13 +67,13 @@ footer {
 					</tr>
 					<tr>
 						<th>한글 단어</th>
-						<td><input type="text" name="kdiction_word" value="${kdiction_word}"></td>
+						<td><input type="text" name="kdiction_word" id="kdiction_word" value="${kdiction_word}"></td>
 					</tr>
 					<tr>
-						<td colspan ="2" align="right"><button class="btn-transparent-prime" type="submit" onClick="check(${kdiction_word})">제출하기</button></td>
+						<td colspan ="2" align="right"><button id="gameSubmit" class="btn-transparent-prime" type="button" onclick="check();gameSelect();">제출하기</button></td>
 					</tr>
 				</table>
-			</form>		
+			</form>
 		</div>
 	</c:if>
 	<c:if test="${param.mode=='kgame'}">
@@ -92,7 +92,7 @@ footer {
 						<td><input  type="text" name="ediction_word" value="${ediction_word}"></td>
 					</tr>
 					<tr>
-						<td colspan ="2" align="right"><button class="btn-transparent-prime" type="submit" onClick="gameSelect();check();">제출하기</button></td>
+						<td colspan ="2" align="right"><button class="btn-transparent-prime" type="submit" onclick="check()">제출하기</button></td>
 					</tr>
 				</table>
 			</form>		
@@ -107,15 +107,19 @@ footer {
 	
 <%@ include file = "/WEB-INF/views/layout/footer.jsp"%>
 <script type="text/javascript">
-
+window.onload = function(){
+	document.getElementById("gameSubmit").style.display='none';
+}
+var arr = new Array();
 function timer(btn){
 	
-	var time =20;
+	var time = 20;
 	var min = "";//분
 	var sec = "";//초
 	var gameButton = document.getElementById("gameButton");
+	var gameSubmit = document.getElementById("gameSubmit");
 	gameButton.style.display = 'none';
-	
+	gameSubmit.style.display = 'block';
 	//setInterval(함수, 시간): 주기적인 실행
 	
 	var x = setInterval(function(){
@@ -129,6 +133,7 @@ function timer(btn){
 			clearInterval(x);
 			alert("시간 초과");
 			gameButton.style.display = 'block';
+			gameSubmit.style.display = 'none';
 			}
 	},1000);
 }
@@ -149,12 +154,17 @@ function gameSelect(){
 		if(httpRequest.readyState == 4 && httpRequest.status == 200){
 			var data = httpRequest.responseText;
 			console.log("데이터=" + data)
-			document.getElementById("ediction_word").innerHTML = httpRequest.responseText;
+			document.getElementById("ediction_word").innerHTML = data;
+			
+			if(data !=  ""){
+				arr.push(data);
 			}
+			console.log(arr);
+		}
 	}
 	httpRequest.send();
 }
-function check(p){
+function check(){
 	
 	httpRequest = new XMLHttpRequest();
 	
@@ -163,8 +173,8 @@ function check(p){
 		return;
 	}	
 	var httpMethod = "GET";
-	var httpParam = p;
-	var httpURL = "${pageContext.request.contextPath}/game/gameUpdate?kdiction_word="+p;
+	var httpParam = document.getElementById("kdiction_word").value;
+	var httpURL = "${pageContext.request.contextPath}/game/gameUpdate?kdiction_word="+httpParam;
 	
 	httpRequest.open(httpMethod,httpURL,true);
 	
@@ -179,6 +189,12 @@ function check(p){
 httpRequest.send();	
 }
 
+function list(){
+	if(data !=  ""){
+		arr.push(data);
+	}
+	console.log(arr);
+}
  
 
 </script>

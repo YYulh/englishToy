@@ -51,10 +51,12 @@ public class WordController {
 	public String gameUpdate(HttpServletRequest request) {
 		//user의 답변
 		String kdiction_word = request.getParameter("kdiction_word");
+		System.out.println("kdiction_word = "+kdiction_word);
 		//사전의 답변
-		String detect = "";
+		String detect = "사과";
+		System.out.println(detect);
 		// correct || wrong 
-		//script쪽 arrayList에 저장, correct/총갯수*100으로 점수 표현
+		// script쪽 arrayList에 저장, correct/총갯수*100으로 점수 표현
 		String info = "";
 		
 		
