@@ -80,6 +80,9 @@
 		<beans:constructor-arg ref = "TransService"/>
 	</beans:bean>
 	
+	<beans:bean class = "controller.TransController">
+		<beans:constructor-arg ref = "TransService"/>
+	</beans:bean>
 	
 	
 	

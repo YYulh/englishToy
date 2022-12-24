@@ -17,13 +17,12 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import com.fasterxml.jackson.databind.util.JSONWrappedObject;
-
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.JSONObject;
 import common.ViewPath;
 import service.TransService;
+
 
 @Controller
 public class LangController {
@@ -36,17 +35,16 @@ public class LangController {
 	
 	@RequestMapping("/translate/form")
 	public String transForm() {
-		System.out.println("!");
 		return ViewPath.TRANS + "form.jsp";
 	}
 	
-	@RequestMapping(value="/trans/checkLang")
-	public void checkLang(HttpServletRequest request) {
-		 String clientId = "qbfC9arjrNyqLiLs180z"; //애플리케이션 클라이언트 아이디값";
+	@RequestMapping(value="/trans/checkLang",produces = "application/text;charset=utf-8")
+	@ResponseBody
+	public String checkLang(HttpServletRequest request) {
+		String clientId = "qbfC9arjrNyqLiLs180z"; //애플리케이션 클라이언트 아이디값";
         String clientSecret = "xSr0f7uvHu"; //애플리케이션 클라이언트 시크릿값";
 
         String text = request.getParameter("text");
-        System.out.println(text + "text");
         
         String query;
         try {
@@ -62,14 +60,23 @@ public class LangController {
 
         String responseBody = post(apiURL, requestHeaders, query);
 
+        String result = "";
+        try {
+        	JSONParser parser = new JSONParser();
+        	
+        	JSONObject json =  (JSONObject)parser.parse(responseBody);
+        	
+        	result = (String)json.get("langCode"); 
+        	
+        	
+        }catch (Exception e) {
+        	e.printStackTrace();
+        }
+		return result;
         
-        System.out.println(responseBody);
-        
-//        JSONPObject
-        System.out.println(responseBody);
 	}
 	
-	private static String post(String apiUrl, Map<String, String> requestHeaders, String text){
+	private String post(String apiUrl, Map<String, String> requestHeaders, String text){
         HttpURLConnection con = connect(apiUrl);
         String postParams =  "query="  + text; //원본언어: 한국어 (ko) -> 목적언어: 영어 (en)
         try {
@@ -118,7 +125,7 @@ public class LangController {
             while ((line = lineReader.readLine()) != null) {
                 responseBody.append(line);
             }
-
+            
             return responseBody.toString();
         } catch (IOException e) {
             throw new RuntimeException("API 응답을 읽는데 실패했습니다.", e);
